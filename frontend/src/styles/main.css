@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+}
+
+
+body {
+    background: #2b2a33;
+    caret-color: transparent;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.mainHeader {
+    position: relative;
+    background: #0d0d0d;
+    padding: 35px 100px;
+}
+
+.mainHeaderLine {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10%;
+}
+
+.mainPage {
+    display: inline-block;
+    text-decoration: none;
+    user-select: none;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    padding-right: 40px;
+}
+
+
+
+.user {
+    position: relative;
+    margin: 35px;
+    width: 50%;
+    margin-left: 7%;
+    padding: 15px;
+    background-color:cornflowerblue;
+    line-height: 25px;
+    border-radius: 20px;
+
+    overflow: hidden;
+    max-height: 70px;
+    transition: max-height 0.5s ease-out;
+}
+
+
+.expansion-body {
+    max-height: 700px;
+    transition: max-height 0.7s ease-in;
+}
+
+
+
+
+aside .add-user-form {
+    position: absolute;
+    top: 170px;
+    margin-left: 69%;
+    width: 260px;
+}
+
+.add-user-form input, textarea, button {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    background-color: #222;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    outline: white;
+    font-size: 15px;
+    caret-color: white;
+    border: none;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.add-user-form input, textarea {
+    text-indent: 10px;
+}
+
+
+aside .add-user-form button {
+    width: 45%;
+    transition: transform 0.3s ease;
+}
+
+aside .add-user-form button:hover {
+    transform: scale(1.1);
+    background-color: #3e8e41;
+}
+
+.change-icons {
+    font-size: 25px;
+    position: absolute;
+    left: 88%;
+    top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.delete-icon {
+    transition: transform 0.3s ease;
+}
+
+.delete-icon:hover {
+    transform: scale(1.15);
+    color: red;
+}
+
+.edit-icon {
+    transition: transform 0.3s ease;
+}
+
+.edit-icon:hover {
+    transform: scale(1.15);
+    color: orange;
+}
+
+
+.user form input, 
+.user form textarea,
+.user form button {
+    width: 100%;
+    background-color: #4682B4;
+}
+
+.user form button {
+    transition: transform 0.3s ease;
+}
+
+.user form button:hover {
+    transform: scale(1.015);
+    background-color: #3e8e41;
+}
