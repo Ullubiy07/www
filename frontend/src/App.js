@@ -1,61 +1,72 @@
 import React from "react"
-import Users from "./components/Users"
-import Header from "./components/Header"
-import AddUser from "./components/AddUser"
+
+import HomeBeforeAuth from "./pages/HomeBeforeAuth"
+import Home from "./pages/Home"
+import SignUp from "./pages/SignUp"
+import Auth from "./pages/Auth"
+import NotFound from "./pages/NotFound"
+import PostPage from "./pages/PostPage"
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+// import axios from "axios"
 
 
 class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            users: [
-                {
-                    id: 1,
-                    firstname: 'James',
-                    info: 'Привет я дурачек, работаю программистом в Москве, хочу сделать дурацкий сайт.',
-                    job: "programmer"
-                }
-            ]
+            users: [],
+            cur_user: {
+                id: 0,
+                name: '',
+                password: '',
+                isAuth: false
+            }
         }
         this.addUser = this.addUser.bind(this)
-        this.deleteUser = this.deleteUser.bind(this)
-        this.editUser = this.editUser.bind(this)
+        this.checkAuthUser = this.checkAuthUser.bind(this)
     }
     render() {
-        fetch('https://api.rawg.io/api/platforms?key=e599206a964546f18457a25bbca09a49')
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            console.log(data.results[0].games[0]);
-        })
-        return (<div>
-            <Header />
-            <Users users={this.state.users} onDelete={this.deleteUser} onEdit={this.editUser} />
-            <aside>
-                <AddUser onAdd={this.addUser} />
-            </aside>
-        </div>)
+        return (
+            <BrowserRouter>
+                <Routes>
+                    {!this.state.cur_user.isAuth ? (
+                        <>
+                            <Route path="/" element={<HomeBeforeAuth />} />
+                            <Route path="/reg" element={<SignUp onAdd={this.addUser} />} />
+                            <Route path="/auth" element={<Auth onCheck={this.checkAuthUser} />} />
+                        </>
+                    ) : (
+                        <>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/posts" Component={PostPage} />
+                        </>
+                    )}
+                    <Route path="*" Component={NotFound} />
+                </Routes>
+            </BrowserRouter>
+            
+        )
     }
     addUser(user) {
-        const id = this.state.users.length + 1;
-        this.setState({
-            users: [...this.state.users, {id, ...user}]
-        })
+        console.log(user)
+        const new_id = this.state.users.length + 1;
+        const new_user = {id: new_id, name: user.name, password: user.password, isAuth: true}
+
+        this.setState({cur_user: new_user})
+        this.setState({users: [...this.state.users, new_user]})
     }
-    editUser(user) {
-        const newMass = this.state.users
-        newMass[user.id - 1] = user
-        this.setState({users: newMass})
-    }
-    deleteUser(id) {
-        const newMass = [...this.state.users.slice(0, id - 1), ...this.state.users.slice(id, this.state.users.length)]
-        for (let i = 0; i < newMass.length; i++) {
-            newMass[i].id = i + 1
+    checkAuthUser(user) {
+        let val = false
+        if (val) {
+            this.setState({cur_user: {
+                id: this.state.cur_user.id,
+                name: this.state.cur_user.name,
+                password: this.state.cur_user.password,
+                isAuth: true
+            }})
         }
-        this.setState({
-            users: newMass
-        })
+        console.log(this.state.cur_user.isAuth)
+        return val
     }
 }
 

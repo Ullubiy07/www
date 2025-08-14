@@ -6,9 +6,7 @@ class Header extends React.Component {
             <div className="mainHeader">
                 <div className="mainHeaderLine">
                     <a href="/" className="mainPage">Главная</a>
-                    <a href="/" className="mainPage">баня</a>
-                    <a href="/" className="mainPage">волосатых</a>
-                    <a href="/" className="mainPage">мужиков</a>
+                    <a href="/posts" className="mainPage">Посты</a>
                 </div>
             </div>
         )

@@ -34,7 +34,7 @@ body {
 
 
 
-.user {
+.post {
     position: relative;
     margin: 35px;
     width: 50%;
@@ -58,14 +58,16 @@ body {
 
 
 
-aside .add-user-form {
+aside .add-post-form {
     position: absolute;
     top: 170px;
     margin-left: 69%;
     width: 260px;
 }
 
-.add-user-form input, textarea, button {
+.add-post-form input,
+.add-post-form textarea,
+.add-post-form button {
     margin-bottom: 8px;
     margin-top: 8px;
     padding-bottom: 15px;
@@ -81,17 +83,18 @@ aside .add-user-form {
     border-radius: 20px;
 }
 
-.add-user-form input, textarea {
+.add-post-form input, 
+.add-post-form textarea {
     text-indent: 10px;
 }
 
 
-aside .add-user-form button {
+aside .add-post-form button {
     width: 45%;
     transition: transform 0.3s ease;
 }
 
-aside .add-user-form button:hover {
+aside .add-post-form button:hover {
     transform: scale(1.1);
     background-color: #3e8e41;
 }
@@ -124,18 +127,58 @@ aside .add-user-form button:hover {
 }
 
 
-.user form input, 
-.user form textarea,
-.user form button {
+.post form input, 
+.post form textarea,
+.post form button {
     width: 100%;
     background-color: #4682B4;
 }
 
-.user form button {
+.post form button {
     transition: transform 0.3s ease;
 }
 
-.user form button:hover {
+.post form button:hover {
     transform: scale(1.015);
     background-color: #3e8e41;
+}
+
+
+
+
+
+/* Форма авторизации и регистрации */
+.auth-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+
+.auth-form input,
+.auth-form button {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    background-color: #222;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    outline: white;
+    font-size: 15px;
+    caret-color: white;
+    border: none;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.auth-form input {
+    text-indent: 20px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.auth-form button {
+    padding-bottom: 18px;
+    padding-top: 18px;
 }
