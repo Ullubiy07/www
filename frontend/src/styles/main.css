@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+}
+
+
+body {
+    background: #2b2a33;
+    caret-color: transparent;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.mainHeader {
+    position: relative;
+    background: #0d0d0d;
+    padding: 35px 100px;
+}
+
+.mainHeaderLine {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10%;
+    right: 1%;
+}
+
+.mainPage {
+    display: inline-block;
+    text-decoration: none;
+    user-select: none;
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    padding-right: 40px;
+}
+
+
+
+.post {
+    position: relative;
+    margin: 35px;
+    width: 50%;
+    margin-left: 7%;
+    padding: 15px;
+    background-color:cornflowerblue;
+    line-height: 25px;
+    border-radius: 20px;
+
+    overflow: hidden;
+    max-height: 70px;
+    transition: max-height 0.5s ease-out;
+}
+
+
+.expansion-body {
+    max-height: 700px;
+    transition: max-height 0.7s ease-in;
+}
+
+
+
+
+aside .add-post-form {
+    position: absolute;
+    top: 170px;
+    margin-left: 69%;
+    width: 260px;
+}
+
+.add-post-form input,
+.add-post-form textarea,
+.add-post-form button {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    background-color: #222;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    outline: white;
+    font-size: 15px;
+    caret-color: white;
+    border: none;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.add-post-form input, 
+.add-post-form textarea {
+    text-indent: 10px;
+}
+
+
+aside .add-post-form button {
+    width: 45%;
+    transition: transform 0.3s ease;
+}
+
+aside .add-post-form button:hover {
+    transform: scale(1.1);
+    background-color: #3e8e41;
+}
+
+.change-icons {
+    font-size: 25px;
+    position: absolute;
+    left: 88%;
+    top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.delete-icon {
+    transition: transform 0.3s ease;
+}
+
+.delete-icon:hover {
+    transform: scale(1.15);
+    color: red;
+}
+
+.edit-icon {
+    transition: transform 0.3s ease;
+}
+
+.edit-icon:hover {
+    transform: scale(1.15);
+    color: orange;
+}
+
+
+.post form input, 
+.post form textarea,
+.post form button {
+    width: 100%;
+    background-color: #4682B4;
+}
+
+.post form button {
+    transition: transform 0.3s ease;
+}
+
+.post form button:hover {
+    transform: scale(1.015);
+    background-color: #3e8e41;
+}
+
+
+
+
+
+/* Форма авторизации и регистрации */
+.auth-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+
+.auth-form input,
+.auth-form button {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    background-color: #222;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    outline: white;
+    font-size: 15px;
+    caret-color: white;
+    border: none;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.auth-form input {
+    text-indent: 20px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.auth-form button {
+    padding-bottom: 18px;
+    padding-top: 18px;
+}
+/* Форма авторизации и регистрации */
+
+
+
+
+/* Кнопки для авторизации */
+.exit-icon {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    left: 90%;
+    transition: transform 0.3s ease;
+}
+
+.exit-icon:hover {
+    transform: scale(1.1);
+    color: red;
+}
+
+.auth-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 70%;
+}
+
+.auth-buttons .reg-button,
+.auth-buttons .login-button {
+    margin-right: 15px;
+    font-family: "Montserrat", sans-serif;
+    padding: 6px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.reg-button {
+    background-color: orange;
+}
+
+/* Кнопки для авторизации */
+
+
+
+
+#dropdown-basic {
+    background-color: #4682B4;
+    border: none;
+}
+.input-graph {
+    caret-color: white;
+    color: white;
+    background-color: black;
+    resize: none;
+    border: 2px solid #4682B4;
+    border-radius: 10px;
+    font-size: 25px;
+    padding: 20px 40px;
+    outline: none;
+}
+
+
+@media (min-width: 1025px) {
+    #dropdown-basic {
+        position: absolute;
+        left: 60%;
+        top: 30px;
+    }
+    .input-graph {
+        position: absolute;
+        left: 4%;
+        top: 19%;
+        height: 40%;
+        width: 20%;
+    }
+
+}
+
+
+@media (max-width: 1024px) {
+    #dropdown-basic {
+        position: absolute;
+        left: 65%;
+        width: 200px;
+        margin-top: 65%;
+    }
+    .input-graph {
+        position: absolute;
+        left: 4%;
+        margin-top: 75%;
+        height: 20%;
+        width: 20%;
+    }
+
+}
+
+

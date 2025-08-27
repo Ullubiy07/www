@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+  backend:
+    container_name: FastAPI
+    build: ./backend
+
+    environment:
+      - DATABASE_URL=postgresql://Ullubiy:172007@db/postgres
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    volumes: 
+      - ./backend:/code # dont do in production
+
+  frontend:
+    container_name: React
+    build: ./frontend
+
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/code # dont do in production
+
+  db:
+    restart: always
+    image: postgres:14.3-alpine
+    container_name: Postgres
+
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=Ullubiy
+      - POSTGRES_PASSWORD=172007
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      
+volumes:
+  pgdata:
+
+
+# docker compose down -v
+# to clear volume
