@@ -31,26 +31,38 @@ class Cytoscape extends React.Component {
         return res
     }
 
-    updateGraph() {
+    updateGraph(flag) {
         const newElements = this.get_nodes(this.props.nodes).concat(this.get_edges(this.props.edges))
-            
-        this.setState({ elements: newElements }, () => {
-            this.cy.layout({
-                name: this.state.layout,
-                animate: true,
-                animationDuration: 1000,
-                animationEasing: 'ease-in-out',
-                roots: '#1',
-                fit: true,
-                spacingFactor: 1,
-            }).run()
-        })
+        
+        if (flag) {
+            this.setState({ elements: newElements }, () => {
+                this.cy.layout({
+                    name: this.state.layout,
+                    animate: true,
+                    animationDuration: 1000,
+                    animationEasing: 'ease-in-out',
+                    roots: '#1',
+                    fit: true,
+                    spacingFactor: 1,
+                }).run()
+            })
+        } else {
+            this.setState({ elements: newElements }, () => {
+                this.cy.layout({
+                    name: this.state.layout,
+                    roots: '#1',
+                    fit: true,
+                    spacingFactor: 1,
+                }).run()
+            })
+        }
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.nodes !== this.props.nodes || prevProps.edges !== this.props.edges) {
-            this.updateGraph()
+        if (prevProps.nodes === this.props.nodes || prevProps.edges === this.props.edges) {
+            return
         }
+        this.updateGraph(0)
     }
 
     opt = {
@@ -64,7 +76,7 @@ class Cytoscape extends React.Component {
     LayoutChange(value) {
         if (value == this.state.layout) return
         this.setState({layout: value})
-        this.updateGraph()
+        this.updateGraph(1)
     }
     
 
