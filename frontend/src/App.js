@@ -4,7 +4,6 @@ import Home from "./pages/Home"
 import SignUp from "./pages/SignUp"
 import Auth from "./pages/Auth"
 import NotFound from "./pages/NotFound"
-import PostPage from "./pages/PostPage"
 import ProtectedRoutes from "./utils/ProtectedRoutes"
 import GraphTool from "./pages/GraphTool"
 
@@ -29,7 +28,6 @@ class App extends React.Component {
                 <Routes>
 
                     <Route element={<ProtectedRoutes isAuth={user ? JSON.parse(user).isAuth : false} />}>
-                        <Route path="/posts" element={<PostPage />} />
                         <Route path="/graph-tool" element={<GraphTool />} />
                     </Route>
 

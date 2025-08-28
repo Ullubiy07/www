@@ -10,24 +10,28 @@ class Header extends React.Component {
             <div className="mainHeader">
                 <div className="mainHeaderLine">
                     <Link to="/" className="mainPage">Главная</Link>
-                    <Link to="/posts" className="mainPage">Ерунда</Link>
                     <Link to="/graph-tool" className="mainPage">Графы</Link>
 
                     
-                    {!user && <div className="auth-buttons">
-                        
-                        <Link to="/auth">
-                            <button type="button" className="login-button">Войти</button>
-                        </Link>
+                    {!user && 
+                        <div className="auth-buttons">
+                            
+                            <Link to="/auth">
+                                <button type="button" className="login-button">Войти</button>
+                            </Link>
 
-                        <Link to="/reg">
-                            <button type="button" className="reg-button">Регистрация</button>
-                        </Link>
-                    </div>}
-                    {user && <ImExit className="exit-icon" onClick={() => {
-                        localStorage.removeItem('user')
-                        window.location = ".."
-                    }} /> }
+                            <Link to="/reg">
+                                <button type="button" className="reg-button">Регистрация</button>
+                            </Link>
+                        </div>
+                    }
+                    
+                    {user &&
+                        <ImExit className="exit-icon" onClick={() => {
+                            localStorage.removeItem('user')
+                            window.location = ".."
+                        }} />
+                    }
                 </div>
             </div>
         )

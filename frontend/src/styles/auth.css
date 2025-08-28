@@ -1,0 +1,71 @@
+.auth-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+
+.auth-form input,
+.auth-form button {
+    margin-bottom: 8px;
+    margin-top: 8px;
+    background-color: #222;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    outline: white;
+    font-size: 15px;
+    caret-color: white;
+    border: none;
+    width: 100%;
+    border-radius: 20px;
+}
+
+.auth-form input {
+    text-indent: 20px;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.auth-form button {
+    padding-bottom: 18px;
+    padding-top: 18px;
+}
+
+
+
+
+.exit-icon {
+    color: white;
+    font-size: 30px;
+    position: absolute;
+    left: 90%;
+    transition: transform 0.3s ease;
+}
+
+.exit-icon:hover {
+    transform: scale(1.1);
+    color: red;
+}
+
+.auth-buttons {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 70%;
+}
+
+.auth-buttons .reg-button,
+.auth-buttons .login-button {
+    margin-right: 15px;
+    font-family: "Montserrat", sans-serif;
+    padding: 6px 20px;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+.reg-button {
+    background-color: orange;
+}

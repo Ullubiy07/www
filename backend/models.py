@@ -10,15 +10,3 @@ class User(Base):
     name = Column(String, index=True)
     password = Column(String)
 
-
-
-class Post(Base):
-    __tablename__ = "posts"
-
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String)
-    topic = Column(String)
-    content = Column(String)
-
-    author_id = Column(Integer, ForeignKey("users.id"))
-    author = relationship("User")

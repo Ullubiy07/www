@@ -1,9 +1,9 @@
-import React, {useState} from "react"
+import React from "react"
 
 
 
 
-class InputGraph extends React.Component {
+class GraphInput extends React.Component {
     constructor(props) {
         super(props)
     }
@@ -11,11 +11,11 @@ class InputGraph extends React.Component {
         return (
             <div className="input-field">
                 <textarea onChange={(e) => {
-                    this.props.onAdd(e.target.value)
+                    this.props.onUpdate(e.target.value)
                 }} className="input-graph"></textarea>
             </div>
         )
     }
 }
 
-export default InputGraph
+export default GraphInput
