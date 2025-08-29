@@ -8,7 +8,7 @@ from models import Base, User
 from schemas import UserCreate, User as DbUser
 
 from fastapi.middleware.cors import CORSMiddleware
-
+import subprocess
 
 
 app = FastAPI()
@@ -58,3 +58,14 @@ async def create_user(user: UserCreate, db: Session = Depends(get_db)) -> DbUser
     return db_user
 
 
+@app.post("/graph-dist")
+async def calc(input: str):
+    process = subprocess.Popen(
+        ["./graph"],
+        stdin=subprocess.PIPE,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        text=True
+    )
+    out, err = process.communicate(input)
+    return out

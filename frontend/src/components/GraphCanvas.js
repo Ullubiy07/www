@@ -25,18 +25,18 @@ class GraphCanvas extends React.Component {
         this.updateGraph = this.updateGraph.bind(this)
     }
     getNodes(nodes) {
-        return nodes.map(([id, label]) => ({ data: { id: id, label: label } }))
+        return nodes.map((data) => ({ data: { id: data, label: data } }))
     }
 
     getEdges(edges) {
-        return edges.map(([source, target]) => ({ data: { source: source, target: target, weight: 1 } }))
+        return edges.map(([source, target, weight], index) => ({ data: { source: source, target: target, key: `${index + 1}`, weight: weight } }))
     }
 
     updateGraph() {
         const newElements = this.getNodes(this.props.nodes).concat(this.getEdges(this.props.edges))
         
         this.setState({ elements: newElements }, () => {
-            this.graph.layout({
+            this.cy.layout({
                 name: this.state.layout,
                 animate: true,
                 animationDuration: 1000,
@@ -49,14 +49,23 @@ class GraphCanvas extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (JSON.stringify(prevProps.nodes) !== JSON.stringify(this.props.nodes)) {
+        if (JSON.stringify(prevProps.edges) !== JSON.stringify(this.props.edges)) {
             this.updateGraph()
         }
+        
     }
 
     setLayout(value) {
         this.setState({layout: value})
         this.updateGraph()
+    }
+
+    setNodeColor(id, color) {
+        this.cy.nodes(`[id="${id}"]`).style('background-color', color)
+    }
+    
+    setEdgeColor(key, color) {
+        this.cy.edges(`[key="${key}"]`).style('line-color', color)
     }
     
 
@@ -89,12 +98,12 @@ class GraphCanvas extends React.Component {
                     transform: 'translateY(-50%)',
                     borderRadius: '15px',
                     border: '3px solid black',
-                    backgroundColor: 'white',
+                    backgroundColor: 'white'
                 }}
-                cy={(graph) => {
-                    this.graph = graph;
-                    graph.zoom(1)
-                    graph.userZoomingEnabled(false)
+                cy={(cy) => {
+                    this.cy = cy;
+                    cy.zoom(1)
+                    cy.userZoomingEnabled(false)
                 }}
                 elements={this.state.elements}
             
@@ -106,7 +115,7 @@ class GraphCanvas extends React.Component {
                             'text-valign': 'center',
                             'color': 'black',
                             'background-color': 'white',
-                            'border-width': '3px',
+                            'border-width': '2px',
                             'border-color': 'black',
                             'width': 40,
                             'height': 40,
@@ -116,14 +125,18 @@ class GraphCanvas extends React.Component {
                     {
                         'selector': 'edge',
                         'style': {
+                            'content': 'data(weight)',
                             'line-color': 'black',
-                            'curve-style': 'bezier'
+                            'curve-style': 'bezier',
+                            'color': 'red',
+                            'width': 2,
+                            "text-rotation": "autorotate"
                         }
                     },
                     {
                         'selector': ':selected',
                         'style': {
-                            'background-color': '#34c6eb'
+                            'background-color': '#34c6eb',
                         }
                     }
                 ]}

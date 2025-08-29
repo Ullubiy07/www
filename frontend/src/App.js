@@ -22,7 +22,6 @@ class App extends React.Component {
     }
     render() {
         let user = localStorage.getItem('user')
-
         return (
             <BrowserRouter>
                 <Routes>
@@ -51,7 +50,7 @@ class App extends React.Component {
         })
         const new_user = {id: response.data.id, name: response.data.name, password: response.data.password, isAuth: true}
         localStorage.setItem('user', JSON.stringify(new_user))
-        window.location = "../"
+        // window.location = "../"
     }
     async login(user) {
         try {

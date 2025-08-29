@@ -4,15 +4,17 @@ services:
   backend:
     container_name: FastAPI
     build: ./backend
-
+    
     environment:
       - DATABASE_URL=postgresql://Ullubiy:172007@db/postgres
     ports:
       - 8000:8000
     depends_on:
       - db
-    volumes: 
-      - ./backend:/code # dont do in production
+    volumes:
+      - ./backend/main.py:/code/main.py
+    # volumes: 
+    #   - ./backend/:/code # dont do in production
 
   frontend:
     container_name: React
