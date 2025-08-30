@@ -2,6 +2,7 @@
     background-color: #4682B4;
     border: none;
 }
+
 .input-graph {
     caret-color: white;
     color: white;
@@ -13,7 +14,6 @@
     padding: 20px 40px;
     outline: none;
 }
-
 
 @media (min-width: 1025px) {
     #dropdown-layout {
@@ -29,7 +29,6 @@
         width: 20%;
     }
 }
-
 
 @media (max-width: 1024px) {
     #dropdown-layout {
@@ -50,13 +49,14 @@
 
 
 
+
 .node-dist {
     background-color: black;
     position: fixed;
     left: 75vw;
     top: 20vh;
     padding: 10px 20px;
-    width: 20vw;
+    width: 21vw;
     border: 1px solid white;
     border-radius: 20px;
 }
@@ -78,3 +78,25 @@
     margin-left: 10px;
 }
 
+.visible-path-button {
+    color: yellow;
+    margin-left: 10px;
+    font-size: 30px;
+    transition: all .1s ease-in;
+}
+
+.visible-path-button:hover {
+    transform: scale(1.2);
+}
+
+.direction-button {
+    position: absolute;
+    top: 15%;
+    width: 20%;
+    left: 4%;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    border: 1px solid white;
+}

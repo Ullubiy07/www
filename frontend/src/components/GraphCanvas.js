@@ -20,6 +20,7 @@ class GraphCanvas extends React.Component {
             layout: 'grid',
             elements: []
         }
+        this.cy = null
 
         this.setLayout = this.setLayout.bind(this)
         this.updateGraph = this.updateGraph.bind(this)
@@ -32,9 +33,16 @@ class GraphCanvas extends React.Component {
         return edges.map(([source, target, weight], index) => ({ data: { source: source, target: target, key: `${index + 1}`, weight: weight } }))
     }
 
+    getNode(nodes) {
+        return { data: { id: nodes, label: nodes } }
+    }
+    getEdge(edge) {
+        return { data: { source: edge[0], target: edge[1], key: `1`, weight: edge[2] } }
+    }
+
     updateGraph() {
         const newElements = this.getNodes(this.props.nodes).concat(this.getEdges(this.props.edges))
-        
+
         this.setState({ elements: newElements }, () => {
             this.cy.layout({
                 name: this.state.layout,
@@ -43,7 +51,7 @@ class GraphCanvas extends React.Component {
                 animationEasing: 'ease-in-out',
                 roots: '#1',
                 fit: true,
-                spacingFactor: 1,
+                spacingFactor: 1
             }).run()
         })
     }
@@ -51,26 +59,26 @@ class GraphCanvas extends React.Component {
     componentDidUpdate(prevProps) {
         if (JSON.stringify(prevProps.edges) !== JSON.stringify(this.props.edges)) {
             this.updateGraph()
+            this.props.updateCyto(this.cy)
         }
         
+        // this.cy.resize()
+        
+        
+        if (!this.props.directed) {
+            this.cy.edges().removeClass('directed');
+        } else {
+            this.cy.edges().addClass('directed');
+        }
     }
 
     setLayout(value) {
         this.setState({layout: value})
         this.updateGraph()
     }
-
-    setNodeColor(id, color) {
-        this.cy.nodes(`[id="${id}"]`).style('background-color', color)
-    }
-    
-    setEdgeColor(key, color) {
-        this.cy.edges(`[key="${key}"]`).style('line-color', color)
-    }
     
 
     render() {
-        
         return (
         <>  
             
@@ -104,9 +112,24 @@ class GraphCanvas extends React.Component {
                     this.cy = cy;
                     cy.zoom(1)
                     cy.userZoomingEnabled(false)
+                    cy.center()
+                    
+                    
+                    // let dijkstra = cy.elements().dijkstra('#1', function(edge){
+                    //     return parseInt(edge.data('weight'));
+                    // });
+                    
+                    // try {
+                    //     let path = dijkstra.pathTo('#3');
+                    //     console.log('Путь найден! Длина:', dijkstra.distanceTo('#3'));
+                    //     path.nodes().forEach(function(node) {
+                    //         console.log('Node in path: ' + node.data('id'));
+                    //     });
+                    // } catch {
+                    //     console.log('error dijkstra')
+                    // }
                 }}
                 elements={this.state.elements}
-            
                 stylesheet={[
                     {
                         'selector': 'node',
@@ -134,6 +157,20 @@ class GraphCanvas extends React.Component {
                         }
                     },
                     {
+                        selector: 'edge.directed',
+                        style: {
+                            'content': 'data(weight)',
+                            'line-color': 'black',
+                            'curve-style': 'bezier',
+                            'color': 'red',
+                            'width': 2,
+                            "text-rotation": "autorotate",
+                            'target-arrow-color': '#0074D9',
+                            'target-arrow-shape': 'triangle',
+                            'arrow-scale': 1.5
+                        }
+                    },
+                    {
                         'selector': ':selected',
                         'style': {
                             'background-color': '#34c6eb',
@@ -148,3 +185,14 @@ class GraphCanvas extends React.Component {
 
 
 export default GraphCanvas
+
+
+// if (prevProps.directed != this.props.directed && this.cy != null) {
+//     let options = {'target-arrow-shape': 'triangle', 'arrow-scale': 1}
+//     if (!this.props.directed) {
+//         options = {'target-arrow-shape': 'none'}
+//     }
+//     console.log(options)
+//     this.cy.style().selector('edge').style(options)
+//     return
+// }

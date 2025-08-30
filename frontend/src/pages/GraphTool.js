@@ -9,23 +9,31 @@ class GraphTool extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
+            cy: null,
             nodes: [],
             edges: [],
-            data: ''
+            data: '',
+            directed: false
         }
         this.updateGraph = this.updateGraph.bind(this)
+        this.updateDirect = this.updateDirect.bind(this)
     }
 
     render() {
         return (
             <div>
+                <button onClick={() => this.updateDirect()} className='direction-button'> Ориентировать </button>
                 <Header />
                 <GraphInput onUpdate={this.updateGraph} />
-                <GraphCanvas nodes={this.state.nodes} edges={this.state.edges} />
-                <NodeMinDistance data={this.state.data} />
+                <GraphCanvas nodes={this.state.nodes} edges={this.state.edges} directed={this.state.directed} updateCyto={(cy) => this.setState({cy: cy})} />
+                <NodeMinDistance data={this.state.data} directed={this.state.directed} cy={this.state.cy} />
             </div>
             
         )
+    }
+
+    updateDirect() {
+        this.setState({directed: !this.state.directed})
     }
 
     checkLine(line) {
