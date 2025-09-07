@@ -1,5 +1,6 @@
 # How to use?
-#### You need to create .env files in www/backend and www/frontend directories
+#### 
+You need to create `.env` files in `www/backend` and `www/frontend` directories
 
 ## www/backend
 
