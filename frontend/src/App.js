@@ -9,9 +9,11 @@ import GraphTool from "./pages/GraphTool"
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify'
-
+import env from "react-dotenv"
 
 import axios from "axios"
+
+
 
 class App extends React.Component {
     constructor(props) {
@@ -44,17 +46,17 @@ class App extends React.Component {
     }
     async register(user) {
 
-        const response = await axios.post('http://127.0.0.1:8000/add_user', {
+        const response = await axios.post(env.API_URL + '/add_user', {
             name: user.name,
             password: user.password
         })
         const new_user = {id: response.data.id, name: response.data.name, password: response.data.password, isAuth: true}
         localStorage.setItem('user', JSON.stringify(new_user))
-        // window.location = "../"
+        window.location = "../"
     }
     async login(user) {
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/users/${user.name}/${user.password}`)
+            const response = await axios.get(env.API_URL + `/users/${user.name}/${user.password}`)
             const new_user = {id: response.data.id, name: response.data.name, password: response.data.password, isAuth: true}
             localStorage.setItem('user', JSON.stringify(new_user))
             window.location = "../"

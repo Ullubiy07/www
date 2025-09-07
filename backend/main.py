@@ -9,7 +9,7 @@ from schemas import UserCreate, User as DbUser
 
 from fastapi.middleware.cors import CORSMiddleware
 import subprocess
-
+from config import getEnv
 
 app = FastAPI()
 
@@ -28,7 +28,7 @@ def get_db():
 
 
 origins = [
-    'http://localhost:3000'
+    getEnv('FRONTEND_URL')
 ]
 
 app.add_middleware(

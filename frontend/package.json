@@ -12,11 +12,13 @@
     "bootstrap": "^5.3.8",
     "cytoscape": "^3.33.1",
     "cytoscape-automove": "^1.10.3",
+    "dotenv": "^17.2.2",
     "package.json": "^2.0.1",
     "react": "^19.1.1",
     "react-bootstrap": "^2.10.10",
     "react-cytoscapejs": "^2.0.0",
     "react-dom": "^19.1.1",
+    "react-dotenv": "^0.1.3",
     "react-helmet": "^6.1.0",
     "react-icons": "^5.5.0",
     "react-redux": "^9.2.0",
@@ -27,10 +29,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "react-dotenv && react-scripts start",
+    "build": "react-dotenv && react-scripts build",
+    "test": "react-dotenv && react-scripts test",
+    "eject": "react-dotenv && react-scripts eject"
+  },
+  "react-dotenv": {
+    "whitelist": ["API_URL"]
   },
   "eslintConfig": {
     "extends": [
