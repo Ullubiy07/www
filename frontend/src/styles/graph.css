@@ -100,3 +100,71 @@
     border-radius: 15px;
     border: 1px solid white;
 }
+
+
+
+
+.save-graph-menu {
+    background-color: #4682B4;
+    height: 40vh;
+    width: 30vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1 !important;
+    z-index: 1001;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+
+.save-graph-form input {
+    border-radius: 10px;
+    margin-left: 10%;
+    margin-top: 40%;
+    width: 80%;
+    height: 5vh;
+}
+
+.save-graph-form h2 {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.save-graph-form button {
+    position: absolute;
+    right: 10%;
+    bottom: 8%;
+    font-size: 20px;
+    border-radius: 10px;
+    width: 30%;
+    height: 35px;
+    border: none;
+    background-color: white;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: none;
+    z-index: 1000;
+}
+
+.save-button {
+    position: absolute;
+    right: 5vw;
+    bottom: 5vh;
+    width: 10vw;
+    height: 35px;
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+}

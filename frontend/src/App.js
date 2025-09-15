@@ -6,6 +6,7 @@ import Auth from "./pages/Auth"
 import NotFound from "./pages/NotFound"
 import ProtectedRoutes from "./utils/ProtectedRoutes"
 import GraphTool from "./pages/GraphTool"
+import MyGraphs from './pages/MyGraphs'
 
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify'
@@ -30,6 +31,7 @@ class App extends React.Component {
 
                     <Route element={<ProtectedRoutes isAuth={user ? JSON.parse(user).isAuth : false} />}>
                         <Route path="/graph-tool" element={<GraphTool />} />
+                        <Route path="/my-graphs" element={<MyGraphs />} />
                     </Route>
 
                     <Route path="/" element={<Home />} />

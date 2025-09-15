@@ -3,6 +3,7 @@ import Header from '../components/Header'
 import GraphInput from '../components/GraphInput'
 import GraphCanvas from '../components/GraphCanvas'
 import NodeMinDistance from '../components/NodeMinDistance'
+import SaveGraphMenu from '../components/SavaGraphMenu'
 
 
 class GraphTool extends React.Component {
@@ -13,7 +14,8 @@ class GraphTool extends React.Component {
             nodes: [],
             edges: [],
             data: '',
-            directed: false
+            directed: false,
+            isSave: false
         }
         this.updateGraph = this.updateGraph.bind(this)
         this.updateDirect = this.updateDirect.bind(this)
@@ -27,6 +29,20 @@ class GraphTool extends React.Component {
                 <GraphInput onUpdate={this.updateGraph} />
                 <GraphCanvas nodes={this.state.nodes} edges={this.state.edges} directed={this.state.directed} updateCyto={(cy) => this.setState({cy: cy})} />
                 <NodeMinDistance data={this.state.data} directed={this.state.directed} cy={this.state.cy} />
+
+                <div ref={(save) => this.save = save} onClick={() => {
+                    this.setState({isSave: false})
+                    this.save.classList.toggle('overlay')
+                    
+                }}/>
+                <button className="save-button" onClick={() => {
+                    this.setState({isSave: true})
+                    this.save.classList.toggle('overlay')
+                }}> Сохранить </button>
+
+                {this.state.isSave &&
+                    <SaveGraphMenu />
+                }
             </div>
             
         )

@@ -9,9 +9,9 @@ class Header extends React.Component {
         return (
             <div className="mainHeader">
                 <div className="mainHeaderLine">
-                    <Link to="/" className="mainPage">Главная</Link>
-                    <Link to="/graph-tool" className="mainPage">Графы</Link>
-
+                    <Link to="/" className="mainPage"> Главная </Link>
+                    <Link to="/graph-tool" className="mainPage"> Редактор </Link>
+                    <Link to="/my-graphs" className="mainPage"> Мои графы </Link>
                     
                     {!user && 
                         <div className="auth-buttons">
