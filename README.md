@@ -12,8 +12,8 @@ You need to create `.env` files in `www/backend` and `www/frontend` directories
 ## www/backend
 
 ```env
-DB_USER = 'your_name'
-DB_PASSWORD = 'your_password'
+DB_USER = '<your_name>'
+DB_PASSWORD = '<your_password>'
 DB_NAME = 'postgres'
 DB_SERVER = 'db'
 
